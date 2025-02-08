@@ -1,10 +1,11 @@
-"use client";
+"use client"; // Mark this as a Client Component
 
 import React, { useState, useEffect } from "react";
 import { Product } from "@/types/product";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Cart = () => {
   const router = useRouter();
@@ -26,12 +27,6 @@ const Cart = () => {
   // Calculate total price
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
-  };
-
-  // Redirect to checkout page
-  const handleCheckout = () => {
-    alert("Redirecting to checkout...");
-    router.push("/checkout");
   };
 
   return (
@@ -81,7 +76,7 @@ const Cart = () => {
             </p>
           </div>
 
-          {/* Back & Checkout Buttons */}
+          {/* Back & Proceed to Checkout Buttons */}
           <div className="flex justify-between mt-6">
             <button
               onClick={() => router.back()}
@@ -89,12 +84,11 @@ const Cart = () => {
             >
               Back
             </button>
-            <button
-              onClick={handleCheckout}
-              className="bg-blue-600 text-white px-5 py-2 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all"
-            >
-              Checkout
-            </button>
+            <Link href="/checkout" passHref>
+              <button className="bg-blue-600 text-white px-5 py-2 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all">
+                Proceed to Checkout
+              </button>
+            </Link>
           </div>
         </>
       )}

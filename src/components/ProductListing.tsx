@@ -103,9 +103,9 @@ const ProductListing = () => {
             <p className="text-lg font-bold text-gray-800 mt-2">
               ${product.price.toFixed(2)}
             </p>
-            {product.discountPercent > 0 && (
+            {product.discountPercent != null && product.discountPercent > 0 && (
               <p className="text-sm text-red-500 mt-1">
-                Save {product.discountPercent}%!
+                Save {product.discountPercent}%
               </p>
             )}
             <div className="mt-4 flex items-center justify-between">

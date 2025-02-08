@@ -86,7 +86,7 @@ const ProductDetailsClient: React.FC<ProductDetailsProps> = ({ product }) => {
             <p className="text-xl font-semibold text-gray-800">
               ${product.price.toFixed(2)}
             </p>
-            {product.discountPercent > 0 && (
+            {product.discountPercent != null && product.discountPercent > 0 && (
               <span className="ml-3 text-red-500 bg-red-100 px-2 py-1 rounded-md">
                 -{product.discountPercent}%
               </span>
